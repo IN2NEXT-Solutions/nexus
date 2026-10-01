@@ -1,229 +1,163 @@
-# Nexus Backend
+# IN2NEXT Nexus
 
-The backend foundation for IN2NEXT Nexus.
+An open-source intelligent collaboration, automation, AI, data, and extensibility platform.
 
-This package provides the initial FastAPI application structure, API versioning, configuration, structured logging, error handling, health checks, and automated tests.
+## Vision
 
-## Stack
+Nexus is an open-source platform designed to bring collaboration, automation, AI, data, and future intelligent systems together through a modular and extensible architecture.
 
-- Python 3.12+
-- FastAPI
-- Uvicorn
-- Pydantic Settings
-- Pytest
-- HTTPX
+The project is intended to support contributors across software engineering, AI/ML, data science, design, DevOps, IoT, robotics, research, documentation, and community building.
 
-## Structure
+## Project Status
+
+**Current status:** Early Development  
+**Current series:** Series 001 — Foundation
+
+Nexus is under active development. APIs, architecture, interfaces, and implementation details may change before the first stable release.
+
+## Core Areas
+
+- Collaboration
+- Automation
+- Artificial Intelligence
+- Data
+- APIs and integrations
+- Extensibility
+- Machine learning
+- IoT and edge systems
+- Computer vision
+- Robotics and ROS/ROS2
+- Cloud and enterprise capabilities
+
+## Design Principles
+
+- Open by default
+- Modular architecture
+- Security first
+- Documentation first
+- API first
+- Human-centered AI
+- Safe automation
+- Contributor-friendly engineering
+- Sustainable development
+- Observable and maintainable systems
+
+## Conceptual Architecture
 
 ```text
-backend/
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── core/
-│   │   ├── __init__.py
-│   │   ├── config.py
-│   │   ├── errors.py
-│   │   └── logging.py
-│   └── api/
-│       ├── __init__.py
-│       └── v1/
-│           ├── __init__.py
-│           ├── router.py
-│           └── health.py
+Users / Developers / Operators
+            |
+            v
++-----------------------------+
+|        Nexus Interface      |
+|   Web / API / Integrations  |
++-----------------------------+
+            |
+            v
++-----------------------------+
+|       Core Platform         |
+| Collaboration / Projects    |
+| Automation / Permissions    |
++-----------------------------+
+            |
+     +------+------+
+     |             |
+     v             v
++---------+    +-----------+
+| AI Layer|    | Data Layer|
++---------+    +-----------+
+     |             |
+     +------+------+
+            |
+            v
++-----------------------------+
+| Extensibility / Integrations|
++-----------------------------+
+            |
+            v
++-----------------------------+
+| Future Intelligent Systems  |
+| ML / IoT / Edge / Robotics  |
++-----------------------------+
+```
+
+## Planned Repository Structure
+
+```text
+nexus/
+├── backend/
+├── frontend/
+├── docs/
 ├── tests/
-│   ├── __init__.py
-│   ├── test_health.py
-│   └── test_errors.py
-├── .env.example
-├── .gitignore
-├── requirements.txt
-└── README.md
+├── .github/
+└── project documentation
 ```
 
-## Local Setup
+The repository will evolve as the architecture becomes more concrete.
 
-From the repository root:
+## Development Series
 
-```bash
-cd backend
-python -m venv .venv
-```
+Nexus is planned as a series of development stages:
 
-Activate the environment.
+1. **Series 001 — Foundation**
+2. **Series 002 — Collaboration**
+3. **Series 003 — Automation**
+4. **Series 004 — AI**
+5. **Series 005 — Data**
+6. **Series 006 — Intelligence / ML**
+7. **Series 007 — IoT**
+8. **Series 008 — Robotics**
+9. **Series 009 — Marketplace**
+10. **Series 010 — Cloud and Enterprise**
 
-### Linux / macOS
+These stages are directional rather than fixed commitments.
 
-```bash
-source .venv/bin/activate
-```
+## Contributing
 
-### Windows PowerShell
+Contributions are welcome from developers, designers, AI/ML practitioners, data scientists, researchers, technical writers, security researchers, and community members.
 
-```powershell
-.venv\Scripts\Activate.ps1
-```
+See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-Install dependencies:
+## Community Standards
 
-```bash
-pip install -r requirements.txt
-```
+See [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 
-Create the local environment file:
+## Security
 
-```bash
-cp .env.example .env
-```
+Security issues should be handled according to [`SECURITY.md`](SECURITY.md).
 
-On Windows, copy `.env.example` to `.env` manually if `cp` is unavailable.
+## Governance
 
-## Run the API
+Project governance is documented in [`GOVERNANCE.md`](GOVERNANCE.md).
 
-```bash
-uvicorn app.main:app --reload
-```
+## Roadmap
 
-The API will normally be available at:
+See [`ROADMAP.md`](ROADMAP.md).
 
-```text
-http://127.0.0.1:8000
-```
+## Changelog
 
-OpenAPI documentation:
+See [`CHANGELOG.md`](CHANGELOG.md).
 
-```text
-http://127.0.0.1:8000/docs
-```
+## Support
 
-Alternative ReDoc documentation:
+See [`SUPPORT.md`](SUPPORT.md).
 
-```text
-http://127.0.0.1:8000/redoc
-```
+## License
 
-## Health Endpoint
+Nexus is intended to be released under the Apache License 2.0 unless otherwise stated in the repository.
 
-The initial health endpoint is:
+See [`LICENSE`](LICENSE).
 
-```text
-GET /api/v1/health
-```
+## Organization
 
-Example:
+**IN2NEXT Solutions**
 
-```bash
-curl http://127.0.0.1:8000/api/v1/health
-```
+Repository:
 
-Expected response:
+`IN2NEXT-Solutions/nexus`
 
-```json
-{
-  "status": "ok",
-  "service": "nexus-backend",
-  "version": "0.1.0"
-}
-```
+## Long-Term Direction
 
-## API Versioning
+Nexus is intended to become a modular foundation where people and intelligent systems can collaborate safely, transparently, and productively.
 
-Application APIs are versioned under:
-
-```text
-/api/v1/
-```
-
-Future incompatible API contracts may introduce:
-
-```text
-/api/v2/
-```
-
-Versioning should be used for public compatibility boundaries rather than for every internal change.
-
-## Configuration
-
-Configuration is loaded from environment variables using Pydantic Settings.
-
-Important variables are documented in:
-
-```text
-.env.example
-```
-
-Never commit real secrets.
-
-## Logging
-
-The backend uses standard Python logging with a consistent format.
-
-Application logs should:
-
-- Be useful for debugging.
-- Avoid secrets.
-- Avoid unnecessary personal data.
-- Include meaningful context.
-- Support future structured logging and centralized observability.
-
-## Error Handling
-
-The application provides a consistent JSON response for expected application errors.
-
-Example:
-
-```json
-{
-  "error": {
-    "code": "RESOURCE_NOT_FOUND",
-    "message": "The requested resource was not found.",
-    "request_id": "..."
-  }
-}
-```
-
-Unexpected errors are handled by the global exception handler and should not expose internal implementation details.
-
-## Testing
-
-Run:
-
-```bash
-pytest
-```
-
-The test suite currently validates:
-
-- Health endpoint
-- API versioning
-- Error response behavior
-
-## Development Principles
-
-- Keep modules focused.
-- Validate inputs at boundaries.
-- Keep secrets out of source control.
-- Prefer explicit dependencies.
-- Add tests for new behavior.
-- Keep API contracts documented.
-- Avoid premature microservices.
-- Follow the project's security policy.
-
-See the repository-level `SECURITY.md` and `CONTRIBUTING.md`.
-
-## Next Backend Milestones
-
-The foundation is intentionally small.
-
-Planned next steps include:
-
-1. Database integration.
-2. Dependency injection patterns.
-3. Authentication.
-4. Authorization.
-5. User and organization models.
-6. Project APIs.
-7. Repository/service boundaries.
-8. Background jobs.
-9. Observability.
-10. Integration testing.
+The project will prioritize practical engineering, open contribution, strong documentation, responsible AI, and long-term maintainability.
