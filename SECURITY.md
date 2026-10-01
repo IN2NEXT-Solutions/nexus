@@ -2,222 +2,171 @@
 
 Security is a core requirement of IN2NEXT Nexus.
 
-We take security reports seriously and appreciate responsible security research that helps protect Nexus users, contributors, and the wider open-source ecosystem.
+Because Nexus is intended to support collaboration, automation, AI, data, integrations, and potentially physical intelligent systems, security must be considered throughout development and deployment.
 
 ## Supported Versions
 
-Nexus is currently in early development. During this stage, security support is primarily focused on the latest maintained development or stable release.
+As the project develops, security support will generally focus on:
 
-| Version | Supported |
-| --- | --- |
-| Latest stable release | Yes |
+| Version / Branch | Security Support |
+|---|---|
+| Latest stable release | Supported |
 | Main development branch | Best effort |
-| Older releases | Generally no |
+| Older releases | Generally not supported |
 
-As the project matures, supported versions and security maintenance periods may be formally defined.
+Support may vary during pre-release development.
 
 ## Reporting a Vulnerability
 
-**Please do not report security vulnerabilities through public GitHub Issues, Discussions, pull requests, or social media.**
+Please do not report security vulnerabilities through:
 
-Security vulnerabilities should be reported privately through GitHub's private vulnerability reporting mechanism when it is enabled for the repository.
+- Public GitHub issues
+- Public pull requests
+- Public discussions
+- Social media
+- Public chat channels
 
-If private vulnerability reporting is not available, contact the security maintainers through the security contact published by IN2NEXT Solutions.
+Use GitHub's private vulnerability reporting/security advisory mechanism when available.
 
-A useful security report should include:
+If private reporting is not available, use the security contact documented by the project maintainers.
 
-- A clear description of the vulnerability.
-- The affected component.
-- The affected version, release, or commit.
-- Steps required to reproduce the issue.
-- A proof of concept, where appropriate.
-- Potential security impact.
-- Suggested mitigation, if known.
+## What to Include
 
-Please do not include unnecessary personal information or unrelated confidential information.
+A useful report should include:
 
-## What Happens After a Report
+- Description of the vulnerability.
+- Affected component.
+- Affected version or commit.
+- Steps to reproduce.
+- Proof of concept where appropriate.
+- Potential impact.
+- Suggested mitigation if known.
 
-After receiving a security report, the maintainers will make reasonable efforts to:
-
-1. Acknowledge the report.
-2. Validate and investigate the issue.
-3. Determine the affected components and versions.
-4. Assess severity and potential impact.
-5. Develop or coordinate an appropriate fix.
-6. Test the proposed mitigation.
-7. Coordinate disclosure where appropriate.
-8. Publish relevant security information when appropriate.
-
-Response times may vary depending on severity, complexity, available information, and maintainer availability.
+Please avoid including unnecessary personal or confidential information.
 
 ## Responsible Disclosure
 
-We ask security researchers to allow reasonable time for investigation and remediation before publicly disclosing technical details.
+Security researchers are encouraged to provide maintainers reasonable time to investigate and address vulnerabilities before public disclosure.
 
-Coordinated disclosure helps protect users who have not yet had an opportunity to update.
+The project will aim to:
 
-Security researchers are encouraged to provide sufficient technical information for maintainers to reproduce and understand the vulnerability.
+1. Acknowledge the report.
+2. Validate the issue.
+3. Assess severity and impact.
+4. Develop a mitigation.
+5. Coordinate disclosure where appropriate.
+6. Publish relevant security information.
 
-## Security-Sensitive Information
+## Secrets and Credentials
 
-Never publish the following information in public issues, pull requests, discussions, or documentation:
+Never commit:
 
 - Passwords
 - API keys
-- Access tokens
 - Private keys
-- Authentication credentials
-- Production database credentials
+- Access tokens
 - Cloud credentials
-- Private certificates
-- Personal confidential information
-- Unreleased security research
-- Internal infrastructure credentials
+- Database credentials
+- Production secrets
 
-If a secret is accidentally committed to the repository, assume that it has been compromised.
-
-Deleting the file from the latest commit is not sufficient because the secret may remain in Git history, forks, caches, logs, or other locations.
-
-Affected credentials should be revoked and rotated immediately.
+Use appropriate secret-management mechanisms for development and deployment.
 
 ## AI Security
 
-Nexus may integrate artificial intelligence and machine-learning systems.
-
-AI-related security risks may include:
+AI-related systems may introduce risks including:
 
 - Prompt injection
-- Indirect prompt injection
-- Unauthorized tool execution
-- Excessive agent permissions
-- Sensitive-data leakage
+- Tool misuse
+- Data leakage
+- Excessive permissions
 - Retrieval poisoning
-- Unsafe model-generated actions
+- Unsafe autonomous actions
+- Model manipulation
 - Insecure model integrations
-- Improper trust in model output
-- Inadequate human approval mechanisms
 
-AI-generated output must not automatically be treated as trusted or authoritative.
-
-Systems that allow AI to perform consequential actions should use appropriate authentication, authorization, validation, permission boundaries, logging, and human approval mechanisms.
+AI features should use least privilege, validation, appropriate boundaries, logging, and human oversight where necessary.
 
 ## Automation Security
 
-Automation workflows can potentially execute actions across external systems.
+Automation systems should be designed to prevent unintended actions.
 
-Contributors should consider:
+Important controls may include:
 
+- Permission boundaries
+- Explicit action scopes
 - Authentication
 - Authorization
-- Least-privilege access
 - Input validation
-- Output validation
-- Rate limiting
-- Audit logging
+- Rate limits
+- Audit logs
+- Human approval
 - Failure handling
-- Retry behavior
-- Permission boundaries
-
-Automation should not provide broader privileges than required for its intended purpose.
+- Safe defaults
 
 ## Robotics and Physical Systems
 
-Future Nexus integrations may support robotics, IoT devices, edge systems, or other physical systems.
+Systems interacting with physical environments require additional safety considerations.
 
-Physical actions require additional safety considerations.
+Software should not assume that an automated action is harmless merely because it is technically valid.
 
-Software should not assume that an AI-generated instruction, external event, sensor value, or workflow action is automatically safe to execute on a physical device.
+Robotics-related systems should consider:
 
-Where applicable, physical-device integrations should include:
+- Emergency stop mechanisms
+- Human override
+- Physical constraints
+- Sensor failures
+- Communication failures
+- Safe fallback behavior
+- Testing environments
+- Deployment boundaries
 
+## Dependencies and Supply Chain
+
+Dependencies should be:
+
+- Kept reasonably current.
+- Reviewed for security issues.
+- Pinned or constrained where appropriate.
+- Audited where practical.
+- Removed when unnecessary.
+
+Build and deployment workflows should follow least-privilege principles.
+
+## Secure Development
+
+Contributors should consider security during:
+
+- Architecture design
+- API development
 - Authentication
 - Authorization
-- Input validation
-- Device-state validation
-- Safety limits
-- Permission boundaries
-- Failure handling
-- Emergency controls
-- Appropriate human approval
-
-## Dependency and Supply-Chain Security
-
-Nexus will use appropriate security practices for project dependencies and the software supply chain.
-
-These may include:
-
-- Dependency vulnerability monitoring
-- Automated dependency updates
-- Dependency review
-- Secret detection
-- Static analysis
-- Code scanning
-- Secure CI/CD practices
-- Release integrity controls
-
-Contributors should avoid introducing unnecessary dependencies and should consider the maintenance and security implications of new dependencies.
-
-## Security Development Practices
-
-Security should be considered throughout the development lifecycle.
-
-Contributors are encouraged to:
-
-- Validate untrusted input.
-- Follow least-privilege principles.
-- Avoid hard-coded credentials.
-- Handle authentication and authorization explicitly.
-- Write security-focused tests for sensitive functionality.
-- Review dependencies before introducing them.
-- Avoid exposing sensitive information in logs.
-- Document security-sensitive behavior.
-- Consider abuse cases during feature design.
-
-## Security Issues in Pull Requests
-
-If a pull request contains information that exposes a previously unknown vulnerability, do not continue discussing sensitive technical details publicly.
-
-Contact the security maintainers privately and allow the issue to be handled through the security process.
+- Data handling
+- Dependency selection
+- CI/CD
+- Infrastructure
+- Logging
+- AI integration
+- Automation
+- Deployment
 
 ## Security Advisories
 
-When appropriate, IN2NEXT Solutions may publish a GitHub security advisory describing:
+Confirmed vulnerabilities may be documented through GitHub Security Advisories or other appropriate channels.
 
-- Affected versions
-- Severity
-- Impact
-- Mitigation
-- Fixed versions
-- Upgrade recommendations
+Disclosure details should balance transparency with user safety.
 
-Disclosure decisions will consider user safety, exploitability, availability of fixes, and responsible disclosure practices.
+## Acknowledgements
 
-## Security Acknowledgements
-
-We appreciate responsible security researchers and contributors who help improve Nexus security.
-
-Where appropriate and with permission, contributors who responsibly report security vulnerabilities may be acknowledged in security advisories or project documentation.
+The project may acknowledge security researchers who responsibly report vulnerabilities, subject to their preference.
 
 ## Policy Changes
 
-This security policy may evolve as Nexus grows.
+This policy may evolve as Nexus grows.
 
-Changes may be made to improve:
+Security requirements for future AI, automation, cloud, IoT, and robotics components may require additional controls.
 
-- Vulnerability response
-- Security reporting
-- Supported versions
-- Disclosure practices
-- Development security
-- Supply-chain security
+## Related Documentation
 
-Significant changes will be documented in the repository.
-
-## Contact
-
-For security reports, use the repository's private vulnerability reporting mechanism when available.
-
-For general project support, see [SUPPORT.md](SUPPORT.md).
-
-For contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+- [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- [`GOVERNANCE.md`](GOVERNANCE.md)
+- [`SUPPORT.md`](SUPPORT.md)

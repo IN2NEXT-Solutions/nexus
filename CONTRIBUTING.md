@@ -1,129 +1,67 @@
-# CONTRIBUTING.md
-
 # Contributing to IN2NEXT Nexus
 
-Thank you for your interest in contributing to **IN2NEXT Nexus**.
+Thank you for your interest in contributing to Nexus.
 
-Nexus is intended to be built by a diverse community of developers, designers, researchers, engineers, and technical contributors. Contributions of different sizes and from different disciplines are valuable.
-
-Please read this document before opening an issue or pull request.
-
-## Code of Conduct
-
-All contributors are expected to follow the project's [Code of Conduct](CODE_OF_CONDUCT.md).
-
-Participation in the Nexus community is conditional on respectful and constructive behavior.
+Nexus is intended to be an open-source project where people with different technical and non-technical backgrounds can collaborate.
 
 ## Ways to Contribute
 
-You do not need to be a senior developer to contribute.
+You can contribute through:
 
-### Code
-
-* New features
-* Bug fixes
-* Refactoring
-* Performance improvements
-* Tests
-* Developer tooling
-* Integrations
-* APIs
-* Plugins
-
-### AI / ML / Data
-
-* AI integrations
-* Agent capabilities
-* Retrieval systems
-* Model adapters
-* ML experiments
-* Data pipelines
-* Analytics
-* Evaluation systems
-
-### Design
-
-* UX research
-* UI design
-* Design systems
-* Accessibility
-* User flows
-* Prototypes
-* Usability improvements
-
-### Documentation
-
-* Tutorials
-* API documentation
-* Guides
-* Examples
-* Architecture documentation
-* Typographical corrections
-* Translations
-
-### Community
-
-* Answering questions
-* Reviewing proposals
-* Testing releases
-* Reproducing bugs
-* Mentoring contributors
-* Improving contributor experience
+- Software development
+- Backend development
+- Frontend development
+- AI/ML
+- Data science and engineering
+- Automation
+- DevOps and infrastructure
+- Security
+- UI/UX and design
+- Documentation
+- Testing and quality assurance
+- Research
+- Community support
+- Project management
+- Robotics, IoT, and intelligent systems
 
 ## Before You Start
 
-Before starting substantial work:
+Before making a significant change:
 
-1. Search existing issues and discussions.
-2. Check the roadmap.
-3. Look for an existing issue related to the work.
-4. For major features or architectural changes, start a discussion or RFC before implementation.
-5. Confirm that your proposed work aligns with the project's scope.
+1. Read the project documentation.
+2. Check existing issues and discussions.
+3. Review the roadmap.
+4. Search for existing work related to your idea.
+5. Open an issue or discussion for large architectural changes.
 
-Avoid spending significant time implementing a feature that has not been discussed when the change could materially affect the architecture or public API.
-
-## Good First Issues
-
-Issues marked `good-first-issue` are intended to provide accessible entry points for new contributors.
-
-They may include:
-
-* Documentation
-* Tests
-* Small UI improvements
-* Bug fixes
-* Examples
-* Developer-experience improvements
-
-Maintainers may provide additional guidance on individual issues.
+Small documentation and maintenance changes can usually proceed directly through a pull request.
 
 ## Development Workflow
 
-The normal contribution workflow is:
+The preferred workflow is:
 
 ```text
-Find or discuss work
-        ↓
-Fork repository
-        ↓
+Issue / Discussion
+       |
+       v
 Create branch
-        ↓
+       |
+       v
 Implement change
-        ↓
-Add/update tests
-        ↓
-Run local checks
-        ↓
+       |
+       v
+Run tests
+       |
+       v
 Open Pull Request
-        ↓
-Automated checks
-        ↓
+       |
+       v
 Code review
-        ↓
-Address feedback
-        ↓
+       |
+       v
 Approval
-        ↓
+       |
+       v
 Merge
 ```
 
@@ -131,224 +69,163 @@ Merge
 
 Use descriptive branch names.
 
-Recommended formats:
+Recommended prefixes:
 
 ```text
-feature/<short-description>
-fix/<short-description>
-docs/<short-description>
-refactor/<short-description>
-test/<short-description>
-chore/<short-description>
-security/<short-description>
+feature/
+fix/
+docs/
+refactor/
+test/
+chore/
+security/
 ```
 
 Examples:
 
 ```text
-feature/workflow-builder
-fix/project-permission-check
-docs/plugin-development
-refactor/api-client
-test/workflow-engine
+feature/user-authentication
+fix/api-timeout
+docs/update-architecture
+refactor/workflow-engine
+test/api-integration
+security/harden-permissions
 ```
 
 ## Commits
 
-Write clear, concise commit messages.
+Use clear, focused commit messages.
 
-Prefer:
-
-```text
-feat: add workflow trigger API
-fix: prevent unauthorized project access
-docs: document plugin lifecycle
-test: add workflow validation tests
-refactor: simplify permission resolver
-```
-
-Avoid commits such as:
+Recommended prefixes:
 
 ```text
-update
-changes
-final
-fix
-stuff
+feat:
+fix:
+docs:
+test:
+refactor:
+chore:
+security:
 ```
-
-## Pull Requests
-
-Every pull request should clearly explain:
-
-* What changed
-* Why the change was made
-* Related issue or discussion
-* How the change was tested
-* Whether documentation was updated
-* Whether the change introduces breaking behavior
-* Any known limitations
-
-For UI changes, include screenshots or recordings where useful.
-
-For architectural changes, include relevant design decisions.
-
-## Pull Request Checklist
-
-Before requesting review, confirm:
-
-* [ ] The change has a clear purpose.
-* [ ] Existing functionality was considered.
-* [ ] Tests were added or updated where appropriate.
-* [ ] Documentation was updated where necessary.
-* [ ] No secrets or credentials were added.
-* [ ] No unrelated changes are included.
-* [ ] The code passes applicable local checks.
-* [ ] The pull request description is complete.
-* [ ] Breaking changes are clearly identified.
-
-## Code Review
-
-Code review is intended to improve the project, not criticize contributors.
-
-Reviewers should focus on:
-
-* Correctness
-* Security
-* Maintainability
-* Performance
-* Architecture
-* Accessibility
-* Testing
-* Documentation
-* User impact
-
-Contributors should respond to review comments constructively.
-
-Maintainers may request changes before approving a pull request.
-
-## Tests
-
-Changes should include appropriate tests when practical.
-
-The required test level depends on the change.
 
 Examples:
 
-* Utility function → unit test
-* API endpoint → API/integration test
-* UI component → component test where appropriate
-* Workflow behavior → workflow/integration test
-* Security-sensitive change → security-focused tests
-* Bug fix → regression test where practical
+```text
+feat: add workflow execution API
+fix: handle invalid authentication token
+docs: update contribution guide
+test: add workflow validation tests
+refactor: simplify permission service
+security: restrict tool execution permissions
+```
 
-## Documentation
+Keep commits focused and avoid mixing unrelated changes.
 
-Documentation is part of the implementation.
+## Pull Requests
 
-A feature that changes user-facing behavior should generally update the relevant documentation.
+Every pull request should:
 
-## Breaking Changes
+- Explain what changed.
+- Explain why the change was needed.
+- Identify relevant issues.
+- Include tests where appropriate.
+- Update documentation when required.
+- Mention breaking changes.
+- Avoid unrelated modifications.
+- Pass required CI checks.
 
-Breaking changes require additional consideration.
+## Pull Request Checklist
 
-For a breaking change:
+Before requesting review:
 
-1. Explain the impact.
-2. Document migration requirements.
-3. Update affected documentation.
-4. Update the changelog.
-5. Consider compatibility and deprecation strategies.
-6. Obtain appropriate maintainer review.
+- [ ] The change has a clear purpose.
+- [ ] Relevant documentation has been updated.
+- [ ] Tests have been added or updated where appropriate.
+- [ ] Existing tests pass.
+- [ ] Security implications have been considered.
+- [ ] No secrets or credentials are committed.
+- [ ] Breaking changes are clearly documented.
+- [ ] The pull request is focused and reviewable.
+
+## Code Review
+
+Reviewers should focus on:
+
+- Correctness
+- Security
+- Maintainability
+- Reliability
+- Performance
+- Testing
+- Documentation
+- API compatibility
+- User impact
+
+Review comments should be respectful, specific, and actionable.
 
 ## AI-Assisted Contributions
 
 AI-assisted development is allowed.
 
-However, contributors remain responsible for the changes they submit.
+Contributors remain responsible for:
 
-AI-generated or AI-assisted code must:
+- Reviewing generated code.
+- Understanding the submitted changes.
+- Verifying correctness.
+- Checking licenses and attribution.
+- Testing generated code.
+- Checking for security issues.
+- Avoiding confidential or private information in AI tools.
 
-* Be reviewed by the contributor.
-* Comply with project licensing requirements.
-* Not contain confidential information.
-* Not introduce known security vulnerabilities.
-* Pass applicable tests and checks.
-* Be understandable and maintainable by project contributors.
+Do not submit AI-generated material that you do not have the right to contribute.
 
-Using AI does not transfer responsibility for a pull request to the AI system.
+## Security Contributions
 
-## Security
+Do not disclose vulnerabilities through public issues, discussions, or pull requests.
 
-Never publicly report security vulnerabilities through normal issues or discussions.
-
-Follow [SECURITY.md](SECURITY.md).
-
-Never commit:
-
-* API keys
-* Passwords
-* Access tokens
-* Private certificates
-* Production credentials
-* Personal confidential data
-
-## Design Contributions
-
-Designers are first-class contributors.
-
-Design work may include:
-
-* User flows
-* Wireframes
-* High-fidelity designs
-* Component specifications
-* Accessibility improvements
-* Design-system proposals
-* UX research
-
-Design contributions should explain the problem being solved and, where applicable, provide implementation guidance.
+Follow [`SECURITY.md`](SECURITY.md) for security reporting.
 
 ## Robotics and Physical Systems
 
-Future robotics and physical-device integrations require additional safety considerations.
+Contributions involving physical systems, robotics, autonomous behavior, or hardware should consider:
 
-Contributors must not introduce functionality that can cause physical actions without appropriate authorization, validation, safety controls, and documentation.
+- Physical safety
+- Failure modes
+- Human override
+- Testing environments
+- Deployment boundaries
+- Permission controls
+- Emergency procedures
 
-## Maintainer Review
+## Documentation Contributions
 
-Maintainers may:
+Documentation is a first-class contribution.
 
-* Request changes
-* Close duplicate issues
-* Redirect discussions
-* Reject changes that do not align with project goals
-* Request an RFC
-* Defer work to a future Series
+Examples include:
 
-A rejected pull request does not mean the contributor is unwelcome. Contributors are encouraged to discuss the reasoning and propose alternatives.
+- Tutorials
+- Architecture documentation
+- API documentation
+- Examples
+- Troubleshooting
+- Guides
+- Diagrams
+- Installation instructions
 
 ## Becoming a Maintainer
 
-Maintainer responsibilities are earned through sustained contribution and trust.
+Maintainer responsibilities are documented in [`GOVERNANCE.md`](GOVERNANCE.md).
 
-Relevant factors include:
+Maintainer status is based on sustained contribution, technical understanding, responsible collaboration, and demonstrated commitment to project quality and security.
 
-* Technical quality
-* Review quality
-* Reliability
-* Communication
-* Knowledge of project architecture
-* Community behavior
-* Security awareness
-* Documentation and mentoring
+## License
 
-See [GOVERNANCE.md](GOVERNANCE.md).
+By contributing, you agree that your contribution is provided under the project's applicable license and contribution terms.
 
-## Questions
+See [`LICENSE`](LICENSE) and [`GOVERNANCE.md`](GOVERNANCE.md).
 
-For general questions, see [SUPPORT.md](SUPPORT.md).
+## Final Note
 
-For proposed features or architectural changes, use GitHub Discussions.
+There is no single required background for contributing to Nexus.
 
-Thank you for helping build Nexus.
+Good documentation, thoughtful feedback, testing, design, research, and community work can be just as valuable as writing code.
